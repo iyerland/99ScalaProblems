@@ -5,12 +5,8 @@ import scala.annotation._
 
 object P03 {
   @tailrec def nth[A](n: Int, ls: List[A]): A = (n, ls) match {
-    case (0, h :: _) =>
-      h
-    case (n, _ :: t) =>
-      nth(n - 1, t)
-    case _ =>
-      println(n)
-      throw new IllegalArgumentException
+    case (0, h :: _) => h
+    case (n, _ :: t) => nth(n - 1, t)
+    case _           => println(n) throw new IllegalArgumentException
   }
 }
