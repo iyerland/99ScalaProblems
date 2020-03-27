@@ -5,7 +5,7 @@ import scala.annotation.tailrec
 object Solution {
 
   /**
-    *  Find the last element of a list.
+    *  P01: Find the last element of a list.
     *  last(List(1, 1, 2, 3, 5, 8)) = 8
     */
   @tailrec def last[A](ls: List[A]): A = ls match {
@@ -15,7 +15,7 @@ object Solution {
   }
 
   /**
-    *  Find the last but one element of a list.
+    *  P02: Find the last but one element of a list.
     *  penultimate(List(1, 1, 2, 3, 5, 8)) = 5
     */
   @tailrec def penultimate[A](ls: List[A]): A = ls.size match {
@@ -31,7 +31,7 @@ object Solution {
   }
 
   /**
-    *  Find the nth element of a list.
+    *  P03: Find the nth element of a list.
     *  nth(2, List(1, 1, 2, 3, 5, 8)) = 2
     */
   @tailrec def nth[A](n: Int, ls: List[A]): A = (n, ls) match {
@@ -41,7 +41,7 @@ object Solution {
   }
 
   /**
-    *  Find the number of elements of a list.
+    *  P04: Find the number of elements of a list.
     *  length(List(1, 1, 2, 3, 5, 8)) = 6
     */
   def length[A](ls: List[A]): Int = {
@@ -53,7 +53,7 @@ object Solution {
   }
 
   /**
-    *  Reverse a list.
+    *  P05: Reverse a list.
     *  reverse(List(1, 1, 2, 3, 5, 8)) = List(8, 5, 3, 2, 1, 1)
     */
   def reverse[A](ls: List[A]): List[A] = {
@@ -65,10 +65,22 @@ object Solution {
   }
 
   /**
-    *  Find out whether a list is palindrome.
+    *  P06: Find out whether a list is palindrome.
     *  isPalindrome(List(1, 1, 2, 3, 2, 1, 1)
     */
   def isPalindrome[A](ls: List[A]): Boolean =
     if (ls.size % 2 == 0) false else ls == ls.reverse
 
+  /**
+    *   P07: Flatten a nested list structure.
+    *   Example:
+    *   scala> flatten(List(List(1, 1), 2, List(3, List(5, 8))))
+    *   res0: List[Int] = List(1, 1, 2, 3, 5, 8)
+    */
+  def flatten(ls: List[Any]): List[Any] = {
+    ls flatMap {
+      case x: List[_] => flatten(x)
+      case y          => List(y)
+    }
+  }
 }
