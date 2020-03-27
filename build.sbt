@@ -1,15 +1,25 @@
-name := "99ProblemsScala"
+import sbt._
 
-scalacOptions := Seq("-unchecked", "-deprecation", "-encoding", "utf8")
-
-scalaVersion := "2.10.4"
-
-libraryDependencies ++= Seq(
-  "org.scalatest"  %  "scalatest_2.10"  %  "2.2.4"
+lazy val NinetyNineProblemsScala = (project in file(".")).settings(
+  name := "99ProblemsScala",
+  organization := "iyer.land",
+  version := "1.0",
+  scalaVersion := "2.13.1"
+  // add other settings here
 )
 
-fork := true
+scalacOptions ++= Seq(
+  "-deprecation",
+  "-unchecked",
+  "-encoding",
+  "UTF-8",
+  "-Xlint",
+  "-Xverify",
+  "-feature",
+  "-Xfatal-warnings",
+  "-language:_"
+)
 
-javaOptions += "-Xmx4G"
+val scalaTestVersion = "3.1.1"
 
-scalariformSettings
+libraryDependencies ++= Seq("org.scalatest" %% "scalatest" % scalaTestVersion % "test")
